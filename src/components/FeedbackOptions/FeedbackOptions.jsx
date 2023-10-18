@@ -1,9 +1,19 @@
-export const FeedbackOptions = ({ onLeaveFeedback }) => {
+import { FeedbackWrapper, FeedbackBtn } from "./FeedbackOptions.styled";
+
+export const FeedbackOptions = ({ options, onLeaveFeedback }) => {
   return (
-    <>
-      <button onClick={onLeaveFeedback}>Good</button>
-      <button onClick={onLeaveFeedback}>Neutral</button>
-      <button onClick={onLeaveFeedback}>Bad</button>
-    </>
+    <FeedbackWrapper>
+      {options.map(option => {
+        return (
+          <FeedbackBtn
+            key={option}
+            type="button"
+            onClick={() => onLeaveFeedback(option)}
+          >
+            {option}
+          </FeedbackBtn>
+        );
+      })}
+    </FeedbackWrapper>
   );
 };
